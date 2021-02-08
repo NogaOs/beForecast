@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+      <h1>Weather in {{city_name}}, {{country}}: {{daily_desc}}.</h1>
+        <p>Sunset was at {{sunset}}, and the averge degree was {{avg_temp}}.</p>
+      <h2>Hourly Update:</h2>
+      {% for hour in hours %}
+      {% set time = hour["time"].split(" ")[1] %}
+      {% set c = hour["temp_c"] %}
+      {% set desc = hour["condition"]["text"] %}
+        <li><a> {{time}} -> {{c}}°C, {{desc}}.</a></li>
+      {% endfor %}
+    </body>
+</html>
