@@ -25,6 +25,23 @@ def get_weather_data(city: str, date: str, api_key: str) -> Tuple[str, str, str,
     )
 
 
+def sub_title_gene():
+    sentences = (
+        "See if it was a good idea to go on that trip, yesterday.",
+        "See what's the best time to go to London, last year.",
+        "See if you should've taken an umbrella, last night."
+    )
+    i = 0
+    while True:
+        yield sentences[i]
+        i = (i + 1) % len(sentences)
+
+title_gene = sub_title_gene()
+
+def get_sentence():
+    return next(title_gene)
+
+
 # def get_hourly_data(hour_json):  
 #     return [
 #         {

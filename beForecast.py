@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 
 from config.secret_stuff import API_KEY
 
-from config.funcs import get_weather_data
+from config.funcs import get_weather_data, get_sentence
 
 
 app = Flask(__name__)
@@ -13,7 +13,8 @@ def index():
         date = request.form.get('date') 
         city = request.form.get('city')
         return redirect(url_for('get_weather', city=city, date=date))
-    return render_template('index.html')
+    sub_title = get_sentence()
+    return render_template('index.html', sub_title=sub_title)
 
 
 @app.route('/weather-in/<city>/<date>', methods=['GET', 'POST'])
