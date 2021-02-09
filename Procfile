@@ -1,1 +1,1 @@
-web: gunicorn app:beForecast
+web: gunicorn beForecast:app
