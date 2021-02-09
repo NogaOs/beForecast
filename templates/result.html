@@ -1,10 +1,13 @@
 <html>
     <head>
-        <title></title>
+        <title>beForecast-{{city_name}}</title>
     </head>
+
     <body>
+
       <h1>Weather in {{city_name}}, {{country}}: {{daily_desc}}.</h1>
-        <p>Sunset was at {{sunset}}, and the averge degree was {{avg_temp}}.</p>
+        <p>Sunset was at {{sunset}}, and the averge degree was {{avg_temp}}°C.</p>
+
       <h2>Hourly Update:</h2>
       {% for hour in hours %}
       {% set time = hour["time"].split(" ")[1] %}
@@ -12,5 +15,14 @@
       {% set desc = hour["condition"]["text"] %}
         <li><a> {{time}} -> {{c}}°C, {{desc}}.</a></li>
       {% endfor %}
+
+      <h2>Search Again?</h2>
+
+      <form method="POST">
+          date: <input type="date" id="date" name="date" required><br>
+          city: <input type="text" name="city" required><br>
+          <input type="submit" value="Submit">
+      </form>
+      
     </body>
 </html>

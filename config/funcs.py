@@ -3,7 +3,7 @@ import requests
 from typing import Tuple, List
 
 
-def get_weather_data(city: str, date: str, api_key: str) -> Tuple[str, str, str, str, List[dict]]:
+def get_weather_data(city: str, date: str, api_key: str) -> Tuple[str, str, str, str, str]:
     r = requests.get(f'http://api.weatherapi.com/v1/history.json?key={api_key}&q={city}&dt={date}')
     resp = r.json()
 

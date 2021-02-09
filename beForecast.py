@@ -18,6 +18,12 @@ def index():
 
 @app.route('/weather-in/<city>/<date>', methods=['GET', 'POST'])
 def get_weather(city, date):
+    
+    if request.method == 'POST':
+        date = request.form.get('date') 
+        city = request.form.get('city')
+        return redirect(url_for('get_weather', city=city, date=date))
+
     city_name, country, daily_desc, avg_temp, sunset, hours = get_weather_data(city, date, API_KEY)
     return render_template(
         'result.html', 
