@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 
-from config.secret_stuff import API_KEY
+# from config.secret_stuff import API_KEY
 
 from config.funcs import get_weather_data, get_sentence
 
