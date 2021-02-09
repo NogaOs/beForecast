@@ -36,9 +36,11 @@ def sub_title_gene():
         yield sentences[i]
         i = (i + 1) % len(sentences)
 
+
 title_gene = sub_title_gene()
 
-def get_sentence():
+
+def get_sentence() -> str:
     return next(title_gene)
 
 
