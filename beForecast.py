@@ -4,6 +4,8 @@ from flask import Flask, render_template, request, redirect, url_for
 
 from config.funcs import get_weather_data, get_sentence
 
+from os import getenv
+
 
 app = Flask(__name__)
 
@@ -25,7 +27,7 @@ def get_weather(city, date):
         city = request.form.get('city')
         return redirect(url_for('get_weather', city=city, date=date))
 
-    city_name, country, daily_desc, avg_temp, sunset, hours = get_weather_data(city, date, API_KEY)
+    city_name, country, daily_desc, avg_temp, sunset, hours = get_weather_data(city, date, getenv("API_KEY"))
     return render_template(
         'result.html', 
         city_name=city_name,
