@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 
 # from config.secret_stuff import API_KEY
 
@@ -16,6 +16,7 @@ def index():
         city = request.form.get('city')
         return redirect(url_for('get_weather', city=city, date=date))
     sub_title = get_sentence()
+    flash('You were successfully logged in')
     return render_template('index.html', sub_title=sub_title)
 
 
