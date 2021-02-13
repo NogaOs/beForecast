@@ -1,15 +1,16 @@
-import requests
+# import requests
 
 from typing import Tuple, List
 
+from datetime import date, timedelta
 
-def get_weather_data(city: str, date: str, api_key: str) -> Tuple[str, str, str, str, str]:
-    r = requests.get(f'http://api.weatherapi.com/v1/history.json?key={api_key}&q={city}&dt={date}')
-    resp = r.json()
 
-    city_name = resp["location"]["name"]
-    country = resp["location"]["country"]
-    data = resp["forecast"]["forecastday"][0]
+
+def get_weather_data(response, city: str, date: str, api_key: str) -> Tuple[str, str, str, str, List[dict]]:
+    r_json = response.json()
+    city_name = r_json["location"]["name"]
+    country = r_json["location"]["country"]
+    data = r_json["forecast"]["forecastday"][0]
     daily_desc = data["day"]["condition"]["text"]
     avg_temp = data["day"]["avgtemp_c"]
     sunset = data["astro"]["sunset"]
@@ -23,6 +24,32 @@ def get_weather_data(city: str, date: str, api_key: str) -> Tuple[str, str, str,
         sunset,
         hours
     )
+
+
+def get_error_message(response, response_code: int, city: str, date: str) -> str:
+    r_json = response.json()
+    error_code = r_json["error"]["code"]
+    if response_code == 400:
+        if error_code == 1006:
+            return f"The location '{city}' was not found. Please try another location."
+        elif error_code == 1008:
+            formatted_date = datetime.strptime(date, "%Y-%m-%d").strftime("%d/%m/%Y")
+            return f"Oh no, {formatted_date} was too long ago!\nPlease search only dates within last week."
+        elif error_code == 9999:
+            return "Hmm. It seems like weatherapi.com/ are experiencing internal app issues. the best engineers are currently working on it."
+    elif response_code == 403:
+        if error_code == 2007:
+            return "We're famous! It seems like many people are using this website, and we've exceeded API reqests per month quota."
+        elif error_code == 2008:
+            return "We are experiencing issues with our API key, and currently working on the issue."
+    return error_code
+
+
+def get_date_field_data() -> Tuple[str, str]:
+    today = date.today()    
+    yesterday = today - timedelta(days=1)
+    week_ago = today - timedelta(days=7)
+    return week_ago, yesterday
 
 
 def sub_title_gene():

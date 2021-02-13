@@ -1,7 +1,23 @@
 <h1>beForecast</h1>
+
 <h3>{{sub_title}}</h3>
+
 <form method="POST">
-    date: <input type="date" id="date" name="date" required><br>
-    city: <input type="text" name="city" required><br>
+
+    <div>
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date"
+            value={{value}}
+            min={{min}} max={{max}}
+            required>
+    </div>    
+
+    <div>    
+        <label for="city">City:</label>
+        <input type="text" name="city" required>
+    </div>    
+
+    <!-- date: <input type="date" id="date" name="date" required><br>
+    city: <input type="text" name="city" required><br> -->
     <input type="submit" value="Submit">
 </form>
