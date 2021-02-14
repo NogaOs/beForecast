@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>beForecast-{{city_name}}</title>
+        <title>beForecast - {{city_name}}</title>
     </head>
 
     <body>
@@ -18,11 +18,7 @@
 
       <h2>Search Again?</h2>
 
-      <form method="POST">
-          date: <input type="date" id="date" name="date" required><br>
-          city: <input type="text" name="city" required><br>
-          <input type="submit" value="Submit">
-      </form>
+      {% include 'weather-form.html' %}
       
     </body>
 </html>

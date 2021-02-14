@@ -45,7 +45,8 @@ def get_error_message(response, response_code: int, city: str, date: str) -> str
     return error_code
 
 
-def get_date_field_data() -> Tuple[str, str]:
+def get_date_field_data():
+    """Returns a tuple of two datetime.date objects."""
     today = date.today()    
     yesterday = today - timedelta(days=1)
     week_ago = today - timedelta(days=7)
