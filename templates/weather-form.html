@@ -1,15 +1,17 @@
 <form method="POST">
 
-    <fieldset>
-        {{form.date.label}}
-        {{form.date}}
-    </fieldset>    
-
-    <fieldset>    
-        {{form.city.label}}
-        {{form.city}}
-    </fieldset>    
-
-    {{form.submit}}
-
+    <div class='input-form'>
+        <fieldset class="input-field">
+            {{form.date.label}}
+            {{form.date}}
+        </fieldset>    
+    
+        <fieldset class="input-field">    
+            {{form.city.label}}
+            {{form.city}}
+        </fieldset>    
+    
+        {{form.submit}}
+    
+    </div>    
 </form>

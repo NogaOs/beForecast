@@ -6,6 +6,8 @@ from config.forms import MainForm
 
 from decouple import config
 
+from livereload import Server
+
 import requests
 
 
@@ -56,18 +58,20 @@ def get_weather(city, date):
 
 @app.route('/about-us', methods=['GET', 'POST'])
 def about_us():
-    return "Literally have nothing to say"
+    return render_template('about-us.html')
 
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return "404! Should link to index."  # TODO
+    return render_template('error-404.html')
 
 
 @app.errorhandler(500)
 def internal_server_error(e):
-    return "Oh no! Working on it."
+    return render_template('error-500.html')
 
 
 if __name__ == "__main__":
+    # server = Server(app)
+    # server.serve()
     app.run(debug=True, threaded=True, port=5000)

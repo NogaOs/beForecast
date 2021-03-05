@@ -14,7 +14,7 @@ class MainForm(FlaskForm):
 
     date = DateField(
         label='Date:',
-        render_kw={'min': min_date, 'max': max_date},
+        render_kw={'min': min_date, 'max': max_date, 'value': max_date},
         validators=[DataRequired()]
     )
 
@@ -23,4 +23,4 @@ class MainForm(FlaskForm):
         validators=[DataRequired()]
         )
 
-    submit = SubmitField(label=('Submit'))
+    submit = SubmitField(label='Submit')
