@@ -23,9 +23,8 @@ git clone https://github.com/NogaOs/beForecast.git
 * Install the requirements file by using command `pip install -r requirements.txt`
 * Activate the virtual environment by using command `heroku\Scripts\activate.bat`
 * Set the Flask application.
-  For bash, please use `set FLASK_APP=beForecast.py`
-  For powershell, please use `env FLASK_APP=beForecast.py`
+  * For bash, please use `set FLASK_APP=beForecast.py`
+  * For powershell, please use `env FLASK_APP=beForecast.py`
 * Run flask app using `flask run`
 * The app should now be available on localhost, port 5000.
 * That's it! :D
-
