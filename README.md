@@ -27,4 +27,4 @@ git clone https://github.com/NogaOs/beForecast.git
   * For powershell, please use `env FLASK_APP=beForecast.py`
 * Run flask app using `flask run`
 * The app should now be available on localhost, port 5000.
-* That's it! :D
+* That's it! :bowtie:
