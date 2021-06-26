@@ -1,14 +1,16 @@
 <html>
     <head>
-        <title>beForecast-{{city_name}}</title>
+        <title>beForecast - {{city_name}}</title>
     </head>
 
     <body>
 
-      <h1>Weather in {{city_name}}, {{country}}: {{daily_desc}}.</h1>
+      {% include 'header.html' %}
+
+      <h2>Weather in {{city_name}}, {{country}}: {{daily_desc}}.</h2>
         <p>Sunset was at {{sunset}}, and the averge degree was {{avg_temp}}°C.</p>
 
-      <h2>Hourly Update:</h2>
+      <h3>Hourly Update:</h3>
       {% for hour in hours %}
       {% set time = hour["time"].split(" ")[1] %}
       {% set c = hour["temp_c"] %}
@@ -18,11 +20,10 @@
 
       <h2>Search Again?</h2>
 
-      <form method="POST">
-          date: <input type="date" id="date" name="date" required><br>
-          city: <input type="text" name="city" required><br>
-          <input type="submit" value="Submit">
-      </form>
+      {% include 'weather-form.html' %}
       
     </body>
+
+    {% include 'footer.html' %}
+
 </html>
